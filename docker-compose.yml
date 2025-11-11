@@ -1,20 +1,27 @@
-#docker compose
 version: '3.8'
 
 services:
   server:
-    build: ./part1-server
+    # CORREÇÃO 1: O contexto deve ser a PASTA do serviço. 
+    # Assumimos que o Dockerfile foi movido para 'part1-server/Dockerfile'.
+    build: ./part1-server 
     container_name: server
     ports:
-      - "5555:5555"
+      - "5556:5556"
+    
+    # CORREÇÃO DE PERSISTÊNCIA: VOLUME (Mantida a correção anterior)
+    volumes:
+      - ./part1-server/data:/app/data
 
   client:
+    # CORREÇÃO 2: Contexto para a pasta 'part1-client'.
     build: ./part1-client
     container_name: client
     depends_on:
       - server
 
   bot:
+    # CORREÇÃO 3: Contexto para a pasta 'part1-bot'.
     build: ./part1-bot
     container_name: bot
     depends_on:
