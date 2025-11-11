@@ -119,7 +119,7 @@ func sendAndReceive(req *zmq.Socket, msg Message) {
 			fmt.Printf("📩 [Channel] Canal: %s, Resposta do Servidor: %v\n", channelName, reply.Data)
 		}
 	case "users", "channels":
-		// Mantém a lógica de formatação de listas por vírgula para listagens.
+		// Mantém a lógica de formatação de listas por vírgula para listagens
 		if msg.Service == "users" {
 			if userList, ok := reply.Data["users"].([]interface{}); ok {
 				var formattedUsers []string
@@ -141,7 +141,7 @@ func sendAndReceive(req *zmq.Socket, msg Message) {
 				reply.Data["channels"] = strings.Join(formattedChannels, ", ")
 			}
 		}
-		// Imprime a saída formatada para as listagens.
+		// Imprime a saída formatada para as listagens
 		fmt.Printf("📩 [%s] → %v\n", msg.Service, reply.Data)
 	default:
 		// Saída padrão para outros serviços
@@ -149,7 +149,7 @@ func sendAndReceive(req *zmq.Socket, msg Message) {
 	}
 }
 
-// getRandomSubset escolhe 'n' elementos aleatórios de uma lista.
+// getRandomSubset escolhe 'n' elementos aleatórios de uma lista
 func getRandomSubset(list []string, n int) []string {
 	if n >= len(list) {
 		return list
