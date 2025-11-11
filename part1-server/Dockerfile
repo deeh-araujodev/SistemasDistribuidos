@@ -6,8 +6,7 @@ COPY requirements.txt .
 RUN pip install -r requirements.txt
 
 COPY server.py .
-#COPY data.json .
 
-EXPOSE 5555
+EXPOSE 5556
 
 CMD ["python", "server.py"]

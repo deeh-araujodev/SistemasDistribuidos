@@ -1,6 +1,7 @@
+
 import zmq from "zeromq";
 
-const SERVER_ADDR = "tcp://server:5555";
+const SERVER_ADDR = "tcp://server:5556";
 
 function now() {
   return Date.now();
